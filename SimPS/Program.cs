@@ -1,6 +1,5 @@
 ﻿using SimPS.Components;
 using SimPS.Simulation;
-using System;
 using System.Timers;
 
 namespace SimPS
@@ -27,6 +26,12 @@ namespace SimPS
             sps.Pins.E4.MappedKey = System.Windows.Forms.Keys.S;
             sps.Pins.E5.MappedKey = System.Windows.Forms.Keys.L;
 
+
+
+
+
+
+
             bool LightSensorUsed = false;
 
             var timer = new Timer();
@@ -37,28 +42,27 @@ namespace SimPS
                 timer.Stop();
             };
 
-            SPS.Pin.PinChanged += (o, a) =>
+            SPS.Pin.PinChanged += (o, eventSPS) =>
             {
-                if (a.Pin.Id == sps.Pins.E5.Id) 
+                if (eventSPS.Pin.Id == sps.Pins.E5.Id) 
                 { 
                     motor.MoveUp();
                     //Timer
                     LightSensorUsed = true;
                 }
                 //Notschalter
-                if (a.Pin.Id == sps.Pins.E4.Id)
+                if (eventSPS.Pin.Id == sps.Pins.E4.Id)
                 {
                     motor.EmergencyStop();
                 }
-
                 //Auf
-                if (a.Pin.Id == sps.Pins.E2.Id)
+                if (eventSPS.Pin.Id == sps.Pins.E2.Id)
                 {
                     motor.MoveUp();
                     timer.Stop();
                 }
                 //Zu
-                if (a.Pin.Id == sps.Pins.E3.Id)
+                if (eventSPS.Pin.Id == sps.Pins.E3.Id)
                 {
                     motor.MoveDown();
                 }

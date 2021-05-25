@@ -33,7 +33,6 @@ namespace SimPS.Components
                 }
                 if (Mode == MotorMode.EmergencyStop) Output.Draw(Percentage, ConsoleColor.Red);
                 else Output.Draw(Percentage);
-                Console.WriteLine(Mode);
             };
             timer.Start();
         }
@@ -88,9 +87,6 @@ namespace SimPS.Components
         }
         public class MotorContext
         {
-            public SPS.Pin UpPin;
-            public SPS.Pin DownPin;
-            public SPS.Pin StopPin;
             public SPS.Pin EndTopPin;
             public SPS.Pin EndBottomPin;
         }
