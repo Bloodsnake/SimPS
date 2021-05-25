@@ -53,6 +53,8 @@ namespace SimPS
                 //Notschalter
                 if (eventSPS.Pin.Id == sps.Pins.E4.Id)
                 {
+                    timer.Stop();
+                    LightSensorUsed = false;
                     motor.EmergencyStop();
                 }
                 //Auf
